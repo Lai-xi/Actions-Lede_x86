@@ -153,7 +153,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: ${{ steps.tag.outputs.release_date }} 固件 date +"%Y.%m.%d-%H%M"
+        name: ${{ steps.tag.outputs.release_date }} date +"%Y.%m.%d-%H%M"
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
