@@ -22,5 +22,5 @@ echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.
 echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
 
 # Add OpenClash
-git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/lean/OpenClash
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
