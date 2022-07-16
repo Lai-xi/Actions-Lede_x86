@@ -154,8 +154,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: NanoPi-R2S
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        name: ${{ steps.tag.outputs.release_date }} NanoPi-R2S
+        tag_name: NanoPi-R2S
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
