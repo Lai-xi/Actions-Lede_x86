@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt-NX30Pro
+name: Build H3C-NX30Pro
 
 on:
   repository_dispatch:
