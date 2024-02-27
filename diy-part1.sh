@@ -36,5 +36,5 @@ echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
 # Add Lucky
-git clone  --depth=1 -b https://github.com/gdy666/luci-app-lucky.git package/lucky
+git clone  --depth=1 -b main https://github.com/gdy666/luci-app-lucky.git package/lucky
 
