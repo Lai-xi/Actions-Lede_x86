@@ -18,5 +18,9 @@ sed -i 's/6.1/5.15/g' target/linux/x86/Makefile
 sed -i 's/6.1/5.15/g' target/linux/rockchip/Makefile
 
 # 修改eth0为默认wan口 eth1为默认lan口
-sed -i 's/eth0/eth1/g' package/base-files/files/etc/board.d/99-default_network
-sed -i 's/eth1/eth0/g' package/base-files/files/etc/board.d/99-default_network
+sed -i "s/lan 'eth0'/lan 'eth1'/g" package/base-files/files/etc/board.d/99-default_network
+sed -i "s/wan 'eth1'/wan 'eth0' && ucidef_set_interface_lan 'eth1' || ucidef_set_interface_lan 'eth0'/g" package/base-files/files/etc/board.d/99-default_network
+
+
+
+
