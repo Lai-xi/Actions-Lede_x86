@@ -15,7 +15,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 
 # 切换内核
 sed -i 's/6.1/5.15/g' target/linux/x86/Makefile
-sed -i 's/6.1/5.4/g' target/linux/rockchip/Makefile
+# sed -i 's/6.1/5.15/g' target/linux/rockchip/Makefile
 
 
 
