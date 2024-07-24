@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: 准备完毕
+    - name: CheckOut
       uses: actions/checkout@main
       
     - name: 释放磁盘空间
@@ -76,7 +76,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: 加载diy-part1脚本和feeds.conf.default设置
+    - name: 加载diy-part1脚本和feeds.conf.default配置
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
