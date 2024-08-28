@@ -17,8 +17,7 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-# git clone --depth=1 https://github.com/fw876/helloworld
-git clone --depth=1 https://github.com/Lai-xi/helloworld
+git clone --depth=1 https://github.com/fw876/helloworld
 
 # Add DDNSTO
 echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
