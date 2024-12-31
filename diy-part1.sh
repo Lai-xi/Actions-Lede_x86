@@ -24,9 +24,13 @@ sed -i '/src-git.*openwrt-23/s/^/#/' feeds.conf.default
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 git clone --depth=1 https://github.com/fw876/helloworld
 
+# Add MiHomo
+echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
+
 # Add DDNSTO
 echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
 echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
+
 
 # Add cpufreq
 # rm -rf ./feeds/luci/applications/luci-app-cpufreq
@@ -38,6 +42,8 @@ echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >
 
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
+
+
 
 # Add Lucky
 git clone  --depth=1 -b main https://github.com/gdy666/luci-app-lucky.git package/lucky
