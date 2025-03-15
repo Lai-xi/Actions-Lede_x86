@@ -24,8 +24,8 @@ sed -i '/src-git.*openwrt-23/s/^/#/' feeds.conf.default
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 git clone --depth=1 https://github.com/fw876/helloworld
 
-# Add MiHomo
-echo "src-git mihomo https://github.com/morytyann/OpenWrt-mihomo.git;main" >> "feeds.conf.default"
+# Add Nikki(MiHomo)
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 # Add DDNSTO
 echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
