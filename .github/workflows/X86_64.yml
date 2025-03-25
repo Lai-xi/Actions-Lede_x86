@@ -10,7 +10,7 @@
 
 name: X86_64
 
-on:
+于:
   repository_dispatch:
   workflow_dispatch:
 # 定时编译，国际时间👇
@@ -154,7 +154,7 @@ jobs:
         echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
 
     - name: 生成发布标签
-      id: tag
+      id: 标签
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H.%M")"
@@ -172,7 +172,7 @@ jobs:
         name: X86_64
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+        文件: ${{ env.FIRMWARE }}/*
 
     - name: 删除工作流
       uses: GitRML/delete-workflow-runs@main
@@ -190,7 +190,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 删除部署物
-      uses: geekyeggo/delete-artifact@v1
+      uses: geekyeggo/delete-artifact@v4
       with:
           name: |
             bin-archive
