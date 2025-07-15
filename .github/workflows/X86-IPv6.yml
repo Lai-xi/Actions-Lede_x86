@@ -36,7 +36,7 @@ env:
 jobs:
   build:
     name: 编译固件
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: CheckOut
@@ -190,7 +190,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 删除部署物
-      uses: geekyeggo/delete-artifact@v1
+      uses: geekyeggo/delete-artifact@v4
       with:
           name: |
             bin-archive
