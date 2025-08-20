@@ -15,7 +15,7 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 启用旧版Luci
 sed -i 's/^#\(.*luci\)/\1/' feeds.conf.default
-sed -i '/src-git.*openwrt-23/s/^/#/' feeds.conf.default
+sed -i '/src-git.*openwrt-24/s/^/#/' feeds.conf.default
 
 
 # Add a feed source
