@@ -64,7 +64,6 @@ jobs:
         remove-haskell: 'true'
         remove-codeql: 'true'
         remove-docker-images: 'true'
-        remove-docker-containers: 'true'
         
     - name: 检出代码
       uses: actions/checkout@v4
