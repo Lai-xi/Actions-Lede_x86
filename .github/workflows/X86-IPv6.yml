@@ -30,7 +30,6 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
@@ -65,6 +64,7 @@ jobs:
         remove-haskell: 'true'
         remove-codeql: 'true'
         remove-docker-images: 'true'
+        remove-docker-containers: 'true'
         
     - name: 检出代码
       uses: actions/checkout@v4
@@ -173,36 +173,35 @@ jobs:
         cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 上传固件目录
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@v4
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: 上传固件至cowtransfer网盘
-      id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
-      run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
-        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
-
     - name: 生成发布标签
       id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled() && steps.organize.outputs.status == 'success'
+      if: ${{ env.UPLOAD_RELEASE == 'true' && !cancelled() && steps.organize.outputs.status == 'success' }}
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H.%M")"
-        echo "::set-output name=release_date::$(date +"%Y.%m.%d-%H:%M")"
-        touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        echo "::set-output name=status::success"
+        : > "$GITHUB_OUTPUT"  # 清空旧输出，避免重复触发旧变量
+        release_tag=$(date +"%Y.%m.%d-%H.%M")
+        release_date=$(date +"%Y-%m-%d %H:%M")
+        echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
+        echo "release_date=$release_date" >> "$GITHUB_OUTPUT"
+        echo "status=success" >> "$GITHUB_OUTPUT"
+        # 🔽 添加发布页说明
+        echo "🎯 固件名称: X86 IPv6 构建版" > release.txt
+        echo "📅 编译时间: $release_date" >> release.txt
+        echo "💻 源仓库: $REPO_URL ($REPO_BRANCH)" >> release.txt
+        echo "⚙️ 构建配置: $CONFIG_FILE" >> release.txt
+        echo "----------------------------------------" >> release.txt
+        echo "🧱 编译日志请查看 Actions 构建详情" >> release.txt
 
     - name: 上传固件至Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.status == 'success' && !cancelled() && steps.organize.outputs.status == 'success'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -227,8 +226,3 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 删除部署物
-      uses: geekyeggo/delete-artifact@v4
-      with:
-          name: |
-            bin-archive
