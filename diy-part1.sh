@@ -44,8 +44,9 @@ echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >
 # Add OpenClash
 git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luci-app-openclash
 
-
-
 # Add Lucky
 git clone  --depth=1 -b main https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+# Add luci-app-bandix
+git clone https://github.com/timsaya/openwrt-bandix.git package/lean/bandix/openwrt-bandix
+git clone https://github.com/timsaya/luci-app-bandix.git package/lean/bandix/luci-app-bandix
