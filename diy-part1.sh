@@ -48,5 +48,5 @@ git clone --depth=1 -b master https://github.com/vernesong/OpenClash package/luc
 git clone  --depth=1 -b main https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # Add luci-app-bandix
-git clone https://github.com/timsaya/openwrt-bandix.git package/lean/bandix/openwrt-bandix
-git clone https://github.com/timsaya/luci-app-bandix.git package/lean/bandix/luci-app-bandix
+git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
+git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
