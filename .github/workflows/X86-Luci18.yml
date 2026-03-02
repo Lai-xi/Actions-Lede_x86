@@ -24,8 +24,8 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/x86.config
-  DIY_P1_SH: diy-part1.sh
+  CONFIG_FILE: config/x86-luci.config
+  DIY_P1_SH: diy-part1-luci18.sh
   DIY_P2_SH: diy-part2.sh
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: true
@@ -192,7 +192,7 @@ jobs:
         echo "release_date=$release_date" >> "$GITHUB_OUTPUT"
         echo "status=success" >> "$GITHUB_OUTPUT"
         # 🔽 添加发布页说明
-        echo "🎯 固件名称: X86 构建版" > release.txt
+        echo "🎯 固件名称: X86-Luci18 构建版" > release.txt
         echo "📅 编译时间: $release_date" >> release.txt
         echo "💻 源仓库: $REPO_URL ($REPO_BRANCH)" >> release.txt
         echo "⚙️ 构建配置: $CONFIG_FILE" >> release.txt
@@ -205,7 +205,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: X86_64
+        name: X86-Luci18
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
