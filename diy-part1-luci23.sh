@@ -13,9 +13,6 @@
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# 启用旧版Luci
-# sed -i '/src-git luci.*openwrt-/ s/^/#/' feeds.conf.default
-# sed -i 's|^#\(src-git luci https://[^;]*luci.git\)$|\1|' feeds.conf.default
 
 # Add a feed source
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
@@ -23,8 +20,10 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 git clone --depth=1 https://github.com/fw876/helloworld
 
+
 # Add Nikki(MiHomo)
 echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+
 
 # Add DDNSTO
 echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
