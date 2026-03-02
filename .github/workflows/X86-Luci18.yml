@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X86-Lcui18
+name: X86-Luci18
 
 on:
   repository_dispatch:
