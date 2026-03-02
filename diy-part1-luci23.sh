@@ -22,7 +22,7 @@ git clone --depth=1 https://github.com/fw876/helloworld
 
 
 # Add Nikki(MiHomo)
-echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
+# echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 
 # Add DDNSTO
@@ -49,4 +49,4 @@ git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
 git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
 
 # Add OpenAppFilter
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+# git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
