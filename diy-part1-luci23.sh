@@ -48,5 +48,8 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
 git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
 
+# Add luci-app-wechatpush
+git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+
 # Add OpenAppFilter
 # git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
