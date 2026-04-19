@@ -13,6 +13,9 @@
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
+# 启用23版Luci
+sed -i -E '/^[^#].*luci\.git;openwrt/s/^/#/' feeds.conf.default
+sed -i -E 's/^#\s*(.*luci\.git;openwrt-23\.05.*)/\1/' feeds.conf.default
 
 # Add a feed source
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
