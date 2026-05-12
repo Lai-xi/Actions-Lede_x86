@@ -19,5 +19,5 @@ sed -i 's/LEDE/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LEDE/OpenWrt/g' package/base-files/luci/bin/config_generate
 
 # 切换内核
-# sed -i 's/6.12/6.18/g' target/linux/x86/Makefile
+sed -i 's/6.12/6.18/g' target/linux/x86/Makefile
 
