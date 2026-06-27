@@ -13,14 +13,19 @@
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# 启用18版Luci
-sed -i -E '/^[^#].*luci\.git;openwrt/s#luci\.git;openwrt[^ ]*#luci.git;master#' feeds.conf.default
+# 启用24版Luci
+sed -i '/luci\.git;openwrt/ { /^[^#]/ s/^/#/ }' feeds.conf.default
+sed -i '/openwrt-24.10/ s/^#//' feeds.conf.default
 
 # Add a feed source
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 git clone --depth=1 https://github.com/fw876/helloworld
+
+
+# Add Nikki(MiHomo)
+# echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
 
 
 # Add DDNSTO
@@ -42,4 +47,12 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git package/luci-app-
 # Add Lucky
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 
+# Add luci-app-bandix
+git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
+git clone https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
 
+# Add luci-app-wechatpush
+git clone https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
+
+# Add OpenAppFilter
+# git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
