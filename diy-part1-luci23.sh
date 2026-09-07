@@ -17,10 +17,6 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # sed -i '/luci\.git;openwrt/ { /^[^#]/ s/^/#/ }' feeds.conf.default
 # sed -i '/openwrt-23.05/ s/^#//' feeds.conf.default
 
-# 启用25版Luci
-sed -i '/luci\.git;openwrt/ { /^[^#]/ s/^/#/ }' feeds.conf.default
-sed -i '/openwrt-25.12/ s/^#//' feeds.conf.default
-
 # Add a feed source
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 # svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
