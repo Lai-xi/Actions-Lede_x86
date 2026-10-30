@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 # 定时编译，北京时间👇
   schedule:
-    - cron: '20 18 * * *'
+    - cron: '18 01 * * *'
       timezone: 'Asia/Shanghai'
   # watch:
   #   types: started
