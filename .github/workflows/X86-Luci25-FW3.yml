@@ -13,9 +13,9 @@ name: X86-Luci25-FW3
 on:
   repository_dispatch:
   workflow_dispatch:
-# 定时编译，国际时间👇
+# 定时编译，北京时间👇
   schedule:
-    - cron: '11 1 * * *'
+    - cron: '28 16 * * *'
       timezone: 'Asia/Shanghai'
   # watch:
   #   types: started
