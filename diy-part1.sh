@@ -44,8 +44,15 @@ git clone --depth=1 https://github.com/fw876/helloworld
 # Add OpenClash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git package/luci-app-openclash
 
-# Add Lucky
+# Add Lucky_wanji
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
+LUCKY_VERSION=$(curl -fsSL https://api.github.com/repos/gdy666/lucky/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+MAKEFILE="package/lucky/lucky/Makefile"
+sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${LUCKY_VERSION}/" "$MAKEFILE"
+sed -i 's|^PKG_SOURCE:=.*|PKG_SOURCE:=lucky_$(PKG_VERSION)_Linux_$(LUCKY_ARCH)_wanji.tar.gz|' "$MAKEFILE"
+sed -i 's|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://release.66666.host/v$(PKG_VERSION)/$(PKG_VERSION)_wanji|' "$MAKEFILE"
+sed -i '/^PKG_HASH:=/d' "$MAKEFILE"
+echo "Lucky Wanji: ${LUCKY_VERSION}"
 
 # Add luci-app-bandix
 git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
