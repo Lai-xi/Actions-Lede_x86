@@ -46,13 +46,21 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git package/luci-app-
 
 # Add Lucky_wanji
 git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
-LUCKY_VERSION=$(curl -fsSL https://api.github.com/repos/gdy666/lucky/releases/latest | jq -r '.tag_name' | sed 's/^v//')
+LUCKY_VERSION=$(curl -fsSL https://release.66666.host/ \
+  | grep -oE 'href="./v[0-9]+(\.[0-9]+)+/"' \
+  | sed -E 's|href="./v([^/]+)/"|\1|' \
+  | sort -V \
+  | tail -n 1)
+if [ -z "$LUCKY_VERSION" ]; then
+  echo "错误：获取万吉 Lucky 版本号失败"
+  exit 1
+fi
 MAKEFILE="package/lucky/lucky/Makefile"
+echo "万吉 Lucky 核心版本：$LUCKY_VERSION"
 sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${LUCKY_VERSION}/" "$MAKEFILE"
 sed -i 's|^PKG_SOURCE:=.*|PKG_SOURCE:=lucky_$(PKG_VERSION)_Linux_$(LUCKY_ARCH)_wanji.tar.gz|' "$MAKEFILE"
 sed -i 's|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://release.66666.host/v$(PKG_VERSION)/$(PKG_VERSION)_wanji|' "$MAKEFILE"
-sed -i '/^PKG_HASH:=/d' "$MAKEFILE"
-echo "Lucky Wanji: ${LUCKY_VERSION}"
+
 
 # Add luci-app-bandix
 git clone https://github.com/timsaya/openwrt-bandix.git package/bandix
